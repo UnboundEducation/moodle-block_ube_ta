@@ -23,16 +23,16 @@
  */
 
 $string['pluginname'] = 'Teaching Assistant Block';
+
+// Global settings
 $string['oracle_apikey'] = 'API Key';
 $string['oracle_apikey_help'] = 'The API key provided to you for accessing the Oracle API.';
 $string['oracle_privatekey'] = 'Private Key';
 $string['oracle_privatekey_help'] = 'The private key provided to you for accessing the Oracle API.';
 $string['oracle_session'] = 'Session Length';
 $string['oracle_session_help'] = 'The length of time in seconds to use as a session.  This should ideally mirrior the session length of the LMS.';
-$string['botlabel'] = 'Bot Label';
-$string['botlabel_help'] = 'The name to use for the bot in the chat.';
-$string['userlabel'] = 'User Label';
-$string['userlabel_help'] = 'The name to use for the user in the chat.';
+$string['oracle_domain'] = 'Oracle Domain';
+$string['oracle_domain_help'] = 'The domain of the Oracle API.  This should be the domain and port of the Oracle API.';
 
 //Block settings
 $string['data_filters'] = 'Data Filters';

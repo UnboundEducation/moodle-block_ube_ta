@@ -24,6 +24,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+$settings->add(new admin_setting_configduration(
+    'block_ube_ta/oracle_domain',
+    get_string('oracle_domain', 'block_ube_ta'),
+    get_string('oracle_domain_help', 'block_ube_ta'),
+    'localhost:3000',
+    PARAM_TEXT
+));
+
 $settings->add(new admin_setting_configtext(
     'block_ube_ta/oracle_apikey',
     get_string('oracle_apikey', 'block_ube_ta'),

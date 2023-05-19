@@ -56,6 +56,11 @@ class block_ube_ta extends block_base {
         
         $config = \get_config('block_ube_ta');
 
+        $apipath = null;
+        if (!empty($config->oracle_domain)) {
+            $apipath = 'http://'.$config->oracle_domain.'/api/v1';
+        }
+
         $apikey = null;
         if (!empty($config->oracle_apikey)) {
             $apikey = $config->oracle_apikey;
@@ -81,6 +86,7 @@ class block_ube_ta extends block_base {
             'text' => "
                 <script type='module'>
                     const settings = {
+                        apiPath: '{$apipath}',
                         apiKey: '{$apikey}', 
                         expires: '{$expires}',
                         signature: '{$signature}', 
