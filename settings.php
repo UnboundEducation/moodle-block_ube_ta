@@ -24,7 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$settings->add(new admin_setting_configduration(
+global $CFG;
+
+$settings->add(new admin_setting_configtext(
     'block_ube_ta/oracle_domain',
     get_string('oracle_domain', 'block_ube_ta'),
     get_string('oracle_domain_help', 'block_ube_ta'),
@@ -54,4 +56,12 @@ $settings->add(new admin_setting_configduration(
     get_string('oracle_session_help', 'block_ube_ta'),
     60*60*2,
     PARAM_INT
+));
+
+$settings->add(new admin_setting_configtext(
+    'block_ube_ta/css_url',
+    get_string('css_url', 'block_ube_ta'),
+    get_string('css_url_help', 'block_ube_ta'),
+    $CFG->wwwroot.'/blocks/ube_ta/css/ubeta-bot1.css',
+    PARAM_TEXT
 ));

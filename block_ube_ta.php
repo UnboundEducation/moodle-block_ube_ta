@@ -82,11 +82,17 @@ class block_ube_ta extends block_base {
             //$filters = base64_encode($this->config->config_filters);
         }
 
+        $cssurl = null;
+        if (!empty($config->css_url)) {
+            $cssurl = $config->css_url;
+        }
+
         $this->content = (object)[
             'text' => "
                 <script type='module'>
                     const settings = {
                         apiPath: '{$apipath}',
+                        cssPath: '{$cssurl}',
                         apiKey: '{$apikey}', 
                         expires: '{$expires}',
                         signature: '{$signature}', 

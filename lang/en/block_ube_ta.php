@@ -33,6 +33,8 @@ $string['oracle_session'] = 'Session Length';
 $string['oracle_session_help'] = 'The length of time in seconds to use as a session.  This should ideally mirrior the session length of the LMS.';
 $string['oracle_domain'] = 'Oracle Domain';
 $string['oracle_domain_help'] = 'The domain of the Oracle API.  This should be the domain and port of the Oracle API.';
+$string['css_url'] = 'CSS URL';
+$string['css_url_help'] = 'The URL to the CSS file to use for this block.  This should be a full URL to the CSS file.';
 
 //Block settings
 $string['data_filters'] = 'Data Filters';
