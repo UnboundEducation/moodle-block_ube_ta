@@ -58,7 +58,7 @@ class block_ube_ta extends block_base {
 
         $apipath = null;
         if (!empty($config->oracle_domain)) {
-            $apipath = 'http://'.$config->oracle_domain.'/api/v1';
+            $apipath = 'https://'.$config->oracle_domain.'/api/v1';
         }
 
         $apikey = null;
