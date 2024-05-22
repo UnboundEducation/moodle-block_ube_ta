@@ -29,9 +29,16 @@ export class UBETA {
     signature = null; 
     filters = null;
     showSource = false;
+    resultCount = null;
+    condensePrompt = null;
+    questionPrompt = null;
+    temperature = null;
+    startOpen = false;
+    customCSS = null;
     apiPath = "http://localhost:3000/api/v1";
     cssPath = "http://localhost:3000/packs/ubeta-bot1.css";
     opener = "Hello.  How may I help you?";
+    inputPlaceholder = "Ask a question...";
 
     // internal variables
     mouseStartX;
@@ -69,11 +76,17 @@ export class UBETA {
         css.rel = 'stylesheet';
         head.appendChild(css);
 
+        if (this.customCSS) {
+            const style = document.createElement('style');
+            style.innerHTML = this.customCSS;
+            head.appendChild(style);
+        }
+
         // load html
         this.root = document.createElement('div');
         document.body.appendChild(this.root);
         this.root.innerHTML = `
-            <div class="ubeta-chat-window" hidden>
+            <div class="ubeta-chat-window"  ${this.startOpen?'':'hidden'}>
                 <div class="ubeta-chat-header">
                     <svg class="ubeta-window-handle" role="slider" width="64px" height="64px" viewBox="-4.08 -4.08 32.16 32.16" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(180)" stroke="#000000" stroke-width="0.00024000000000000003"><path d="M22.354 9.354l-.707-.707-13 13 .707.707zm0 7l-.707-.707-6 6 .707.707z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>
                     <svg class="ubeta-icon ubeta-close" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></svg>
@@ -83,7 +96,7 @@ export class UBETA {
                 </div>
                 <div class='ubeta-ellipsis ubeta-loading' hidden></div>
                 <div class="ubeta-input-container">
-                    <input class="ubeta-console" type="text" placeholder="Ask a question..." />
+                    <input class="ubeta-console" type="text" placeholder="${this.inputPlaceholder}" />
                     <svg class="ubeta-icon ubeta-send" role="button" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
                 </div>
                 <div class="ubeta-chat-footer"></div>
@@ -131,6 +144,26 @@ export class UBETA {
     askOracle(message){
         const history = this.getTranscript();
 
+        var body = {
+            question: message,
+            history: history,
+        };
+        if (this.filters){
+            body.filters = this.filters;
+        }
+        if (this.resultCount !== null){
+            body.resultCount = this.resultCount;
+        }
+        if (this.condensePrompt){
+            body.condensePrompt = this.condensePrompt;
+        }
+        if (this.questionPrompt){
+            body.questionPrompt = this.questionPrompt;
+        }
+        if (this.temperature !== null){
+            body.temperature = this.temperature;
+        }
+
         fetch(this.apiPath+"/talk/query", {
             method: 'POST',
             headers: {
@@ -139,11 +172,7 @@ export class UBETA {
                 "Expires": this.expires,
                 "Signature": this.signature,
             },
-            body: JSON.stringify({
-                question: message,
-                history: history,
-                filters: this.filters,
-            })
+            body: JSON.stringify(body)
         })
         .then(res => { 
             if (!res.ok){

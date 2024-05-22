@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_ube_ta';
-$plugin->version = 2024050900;
+$plugin->version = 2024052100;
 $plugin->requires = 2020061513;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '1.6.0';
+$plugin->release = '1.7.0';

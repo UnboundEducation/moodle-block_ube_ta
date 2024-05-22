@@ -58,7 +58,11 @@ class block_ube_ta extends block_base {
 
         $apipath = null;
         if (!empty($config->oracle_domain)) {
-            $apipath = 'https://'.$config->oracle_domain.'/api/v1';
+            if (strpos($config->oracle_domain, 'localhost') !== false || strpos($config->oracle_domain, '127.0.0.1') !== false){
+                $apipath = 'http://'.$config->oracle_domain.'/api/v1';
+            } else {
+                $apipath = 'https://'.$config->oracle_domain.'/api/v1';
+            }
         }
 
         $apikey = null;
@@ -82,9 +86,51 @@ class block_ube_ta extends block_base {
             //$filters = base64_encode($this->config->config_filters);
         }
 
+        $showsource = 'false';
+        if (!empty($this->config->showsource)) {
+            $showsource = 'true';
+        }
+
+        $startopen = 'false';
+        if (!empty($this->config->startopen)) {
+            $startopen = 'true';
+        }
+
+        $condenseprompt = '';
+        if (!empty($this->config->condenseprompt)) {
+            $condenseprompt = $this->config->condenseprompt;
+        }
+
+        $questionprompt = '';
+        if (!empty($this->config->questionprompt)) {
+            $questionprompt = $this->config->questionprompt;
+        }
+
+        $temperature = 0;
+        if (!empty($this->config->temperature)) {
+            $temperature = $this->config->temperature;
+        }
+
+        $sourcecount = 5;
+        if (!empty($this->config->sourcecount)) {
+            $sourcecount = $this->config->sourcecount;
+        }
+
+        $customcss = '';
+        if (!empty($this->config->customcss)) {
+            $customcss = $this->config->customcss;
+        }
+
         $cssurl = null;
         if (!empty($config->css_url)) {
             $cssurl = $config->css_url;
+        }
+
+        $inputPlaceholder = \get_string('input_placeholder', 'block_ube_ta');
+
+        $opener = \get_string('opener', 'block_ube_ta');
+        if (!empty($this->config->opener)) {
+            $opener = $this->config->opener;
         }
 
         $this->content = (object)[
@@ -97,7 +143,15 @@ class block_ube_ta extends block_base {
                         expires: '{$expires}',
                         signature: '{$signature}', 
                         filters: {$filters},
-                        showSource: true,
+                        inputPlaceholder: '{$inputPlaceholder}',
+                        opener: '{$opener}',
+                        showSource: {$showsource},
+                        resultCount: {$sourcecount},
+                        condensePrompt: '{$condenseprompt}',
+                        questionPrompt: '{$questionprompt}',
+                        temperature: {$temperature},
+                        customCSS: '{$customcss}',
+                        startOpen: {$startopen},
                     };
                 
                     import {UBETA} from '{$CFG->wwwroot}/blocks/ube_ta/js/ubeta-bot1.js';

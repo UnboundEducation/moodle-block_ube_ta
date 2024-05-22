@@ -38,10 +38,33 @@ $string['css_url_help'] = 'The URL to the CSS file to use for this block.  This 
 
 //Block settings
 $string['data_filters'] = 'Data Filters';
+$string['config_opener'] = 'Conversation Opener';
+$string['config_opener_help'] = 'The initial message "sent by the bot" to the end-user, when the chat is first opened.<p>
+<i>Note: By default, this is a language specific string. Changing it from the default will override language support.</i></p>';
 $string['config_filters'] = 'Configure Filters';
 $string['config_filters_help'] = 'Configure the filters to use for this block.<p>
 Exmaple: {"Category": "Math", "Grade": "3", "file": "handout.pdf"}
 </p>';
+$string['config_showsource'] = 'Show Source';
+$string['config_showsource_help'] = 'Whether to show the pulled sources to the end-user, in the chat log. Whether shown or not, the sources will still be pulled and provided to the AI.';
+$string['config_startopen'] = 'Start Open';
+$string['config_startopen_help'] = 'Whether to start the chat open, or closed.';
+$string['config_condenseprompt'] = 'Condense Prompt';
+$string['config_condenseprompt_help'] = 'The prompt template used to consolidate the chat history and question into a single prompt. Leave blank to use the default prompt.<p>
+<i>Note:  This feature only works on accounts with prompt engineering enabled.</i></p>';
+$string['config_questionprompt'] = 'Question Prompt';
+$string['config_questionprompt_help'] = 'The prompt template used to ask the question. Leave blank to use the default prompt.<p>
+<i>Note:  This feature only works on accounts with prompt engineering enabled.</i></p>';
+$string['config_temperature'] = 'Temperature';
+$string['config_temperature_help'] = 'OpenAI GPT temperature parameter. Supports values from 0 to 1. Values closer to 0 will result in more predictable, but less creative, responses. Values closer to 1 will result in more creative, but less predictable, responses. Leave blank to use the default value.';
+$string['config_sourcecount'] = 'Source Count';
+$string['config_sourcecount_help'] = 'How many sources to pull and provide to the AI. Supported values are 0 to 5.';
+$string['config_customcss'] = 'Custom CSS';
+$string['config_customcss_help'] = 'Custom CSS to use for this block.  This should be valid CSS.';
+
+// Block strings
+$string['input_placeholder'] = 'Ask a question...';
+$string['opener'] = 'Hello.  How may I help you?';
 
 // Permissions
 $string['ube_ta:addinstance'] = 'Add a new UBE TA block';
