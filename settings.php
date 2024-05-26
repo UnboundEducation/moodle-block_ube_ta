@@ -28,40 +28,40 @@ global $CFG;
 
 $settings->add(new admin_setting_configtext(
     'block_ube_ta/oracle_domain',
-    get_string('oracle_domain', 'block_ube_ta'),
-    get_string('oracle_domain_help', 'block_ube_ta'),
-    'localhost:3000',
-    PARAM_TEXT
+    \get_string('oracle_domain', 'block_ube_ta'),
+    \get_string('oracle_domain_help', 'block_ube_ta'),
+    '',
+    \PARAM_TEXT
 ));
 
 $settings->add(new admin_setting_configtext(
     'block_ube_ta/oracle_apikey',
-    get_string('oracle_apikey', 'block_ube_ta'),
-    get_string('oracle_apikey_help', 'block_ube_ta'),
+    \get_string('oracle_apikey', 'block_ube_ta'),
+    \get_string('oracle_apikey_help', 'block_ube_ta'),
     '',
-    PARAM_TEXT
+    \PARAM_TEXT
 ));
 
 $settings->add(new admin_setting_configtextarea(
     'block_ube_ta/oracle_privatekey',
-    get_string('oracle_privatekey', 'block_ube_ta'),
-    get_string('oracle_privatekey_help', 'block_ube_ta'),
+    \get_string('oracle_privatekey', 'block_ube_ta'),
+    \get_string('oracle_privatekey_help', 'block_ube_ta'),
     '',
-    PARAM_TEXT
+    \PARAM_TEXT
 ));
 
 $settings->add(new admin_setting_configduration(
     'block_ube_ta/oracle_session',
-    get_string('oracle_session', 'block_ube_ta'),
-    get_string('oracle_session_help', 'block_ube_ta'),
-    60*60*2,
-    PARAM_INT
+    \get_string('oracle_session', 'block_ube_ta'),
+    \get_string('oracle_session_help', 'block_ube_ta'),
+    60 * 60 * 2,
+    \PARAM_INT
 ));
 
 $settings->add(new admin_setting_configtext(
     'block_ube_ta/css_url',
-    get_string('css_url', 'block_ube_ta'),
-    get_string('css_url_help', 'block_ube_ta'),
+    \get_string('css_url', 'block_ube_ta'),
+    \get_string('css_url_help', 'block_ube_ta'),
     $CFG->wwwroot.'/blocks/ube_ta/css/ubeta-bot1.css',
-    PARAM_TEXT
+    \PARAM_TEXT
 ));

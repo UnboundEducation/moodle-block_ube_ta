@@ -26,6 +26,11 @@ namespace block_ube_ta\privacy;
 
 use core_privacy\local\metadata\null_provider as null_provider ;
 
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * Privacy Subsystem implementing null_provider for block_ube_ta.
+ */
 class provider implements null_provider {
     public static function get_reason() : string {
         return 'privacy:metadata';

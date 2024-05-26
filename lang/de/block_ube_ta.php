@@ -74,3 +74,4 @@
  
  // Datenschutz
  $string['privacy:metadata'] = 'Der UBE TA Block speichert keine personenbezogenen Daten.';
+ 

@@ -74,3 +74,4 @@
  
  // Adatvédelem
  $string['privacy:metadata'] = 'Az UBE TA blokk nem tárol személyes adatokat.';
+ 

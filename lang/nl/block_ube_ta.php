@@ -74,3 +74,4 @@
  
  // Privacy
  $string['privacy:metadata'] = 'Het UBE TA blok slaat geen persoonlijke gegevens op.';
+ 

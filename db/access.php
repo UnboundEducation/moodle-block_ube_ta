@@ -24,30 +24,30 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
     
-    'block/ube_ta:myaddinstance' => array(
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
+    'block/ube_ta:myaddinstance' => [
+        'riskbitmask' => \RISK_SPAM | \RISK_XSS,
         
         'captype' => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
+        'contextlevel' => \CONTEXT_SYSTEM,
+        'archetypes' => [
             // don't allow by default
-        ),
+        ],
 
         'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
+    ],
 
-    'block/ube_ta:addinstance' => array(
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
+    'block/ube_ta:addinstance' => [
+        'riskbitmask' => \RISK_SPAM | \RISK_XSS,
 
         'captype' => 'write',
-        'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW
-        ),
+        'contextlevel' => \CONTEXT_BLOCK,
+        'archetypes' => [
+            'editingteacher' => \CAP_ALLOW,
+            'manager' => \CAP_ALLOW
+        ],
 
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ),
-);
+    ],
+];

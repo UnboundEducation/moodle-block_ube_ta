@@ -74,3 +74,4 @@
  
  // プライバシー
  $string['privacy:metadata'] = 'UBE TAブロックは個人データを保存しません。';
+ 

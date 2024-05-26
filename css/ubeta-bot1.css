@@ -1,7 +1,4 @@
-
-.ubeta-root {
-
-}
+/** Chatbot Styles **/
 
 .ubeta-float-button {
     position: fixed;
@@ -179,9 +176,10 @@
 .ubeta-float-button {
     animation: slide-up-in 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-.ubeta-input-container{
+.ubeta-input-container {
     animation: slide-up-in 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 @keyframes slide-up-in {
     0% {
         transform: translateY(100%);
@@ -194,6 +192,7 @@
 .ubeta-message {
     animation: slide-fade-left-in 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 @keyframes slide-fade-left-in {
     0% {
         transform: translateX(100%);
@@ -208,6 +207,7 @@
 .ubeta-message {
     animation: slide-fade-left-in 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 @keyframes slide-fade-left-in {
     0% {
         transform: translateX(100%);
@@ -222,6 +222,7 @@
 .ubeta-sources {
     animation: expand-vertical 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 @keyframes expand-vertical {
     0% {
         transform: scaleY(0%);
@@ -274,34 +275,36 @@
   
   @keyframes dot-falling {
     0% {
-      box-shadow: 9999px -15px 0 0 #d3d3d300;
+        box-shadow: 9999px -15px 0 0 #d3d3d300;
     }
     25%, 50%, 75% {
-      box-shadow: 9999px 0 0 0 #d3d3d3;
+        box-shadow: 9999px 0 0 0 #d3d3d3;
     }
     100% {
-      box-shadow: 9999px 15px 0 0 #d3d3d300;
+        box-shadow: 9999px 15px 0 0 #d3d3d300;
     }
   }
+
   @keyframes dot-falling-before {
     0% {
-      box-shadow: 9984px -15px 0 0 #d3d3d300;
+        box-shadow: 9984px -15px 0 0 #d3d3d300;
     }
     25%, 50%, 75% {
-      box-shadow: 9984px 0 0 0 #d3d3d3;
+        box-shadow: 9984px 0 0 0 #d3d3d3;
     }
     100% {
-      box-shadow: 9984px 15px 0 0 #d3d3d300;
+        box-shadow: 9984px 15px 0 0 #d3d3d300;
     }
   }
+
   @keyframes dot-falling-after {
     0% {
-      box-shadow: 10014px -15px 0 0 #d3d3d300;
+        box-shadow: 10014px -15px 0 0 #d3d3d300;
     }
     25%, 50%, 75% {
-      box-shadow: 10014px 0 0 0 #d3d3d3;
+        box-shadow: 10014px 0 0 0 #d3d3d3;
     }
     100% {
-      box-shadow: 10014px 15px 0 0 #d3d3d300;
+        box-shadow: 10014px 15px 0 0 #d3d3d300;
     }
   }

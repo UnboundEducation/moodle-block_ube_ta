@@ -22,22 +22,41 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+ defined('MOODLE_INTERNAL') || die();
+
+ /**
+  * Block class
+  * Compiles all the settings and loads the chatbot JS
+  */
 class block_ube_ta extends block_base {
+
+    /**
+     * Initialize the block
+     */
     public function init() {
         $this->title = \get_string('pluginname', 'block_ube_ta');
     }
 
+    /**
+     * Allow the block to have a configuration
+     */
     public function has_config() {
         return true;
     }
 
+    /**
+     * Allow the block to be added multiple times
+     */
     public function specialization() {
         if (!empty($this->config->title)) {
             $this->title = $this->config->title;
         }
     }
 
-    function html_attributes() {
+    /**
+     * Allow the block to be added multiple times
+     */
+    public function html_attributes() {
         $attributes = parent::html_attributes();
         
         if (!$this->page->user_is_editing()) {
@@ -47,6 +66,9 @@ class block_ube_ta extends block_base {
         return $attributes;
     }
 
+    /**
+     * Get the content for the block
+     */
     public function get_content() {
         global $CFG;
 
@@ -98,12 +120,12 @@ class block_ube_ta extends block_base {
 
         $condenseprompt = '';
         if (!empty($this->config->condenseprompt)) {
-            $condenseprompt = $this->config->condenseprompt;
+            $condenseprompt = htmlspecialchars(addslashes(str_replace(["\r","\n"], ' ', $this->config->condenseprompt)));
         }
 
         $questionprompt = '';
         if (!empty($this->config->questionprompt)) {
-            $questionprompt = $this->config->questionprompt;
+            $questionprompt = htmlspecialchars(addslashes(str_replace(["\r","\n"], ' ', $this->config->questionprompt)));
         }
 
         $temperature = 0;
@@ -118,7 +140,7 @@ class block_ube_ta extends block_base {
 
         $customcss = '';
         if (!empty($this->config->customcss)) {
-            $customcss = $this->config->customcss;
+            $customcss = addslashes(str_replace(["\r","\n"], ' ', $this->config->customcss));
         }
 
         $cssurl = null;
@@ -126,31 +148,31 @@ class block_ube_ta extends block_base {
             $cssurl = $config->css_url;
         }
 
-        $inputPlaceholder = \get_string('input_placeholder', 'block_ube_ta');
+        $inputPlaceholder = htmlspecialchars(addslashes(str_replace(["\r","\n"], ' ', \get_string('input_placeholder', 'block_ube_ta'))));
 
         $opener = \get_string('opener', 'block_ube_ta');
         if (!empty($this->config->opener)) {
-            $opener = $this->config->opener;
+            $opener = addslashes(str_replace(["\r","\n"], ' ', $this->config->opener));
         }
 
         $this->content = (object)[
             'text' => "
                 <script type='module'>
                     const settings = {
-                        apiPath: '{$apipath}',
-                        cssPath: '{$cssurl}',
-                        apiKey: '{$apikey}', 
-                        expires: '{$expires}',
-                        signature: '{$signature}', 
+                        apiPath: \"{$apipath}\",
+                        cssPath: \"{$cssurl}\",
+                        apiKey: \"{$apikey}\", 
+                        expires: \"{$expires}\",
+                        signature: \"{$signature}\", 
                         filters: {$filters},
-                        inputPlaceholder: '{$inputPlaceholder}',
-                        opener: '{$opener}',
+                        inputPlaceholder: \"{$inputPlaceholder}\",
+                        opener: \"{$opener}\",
                         showSource: {$showsource},
                         resultCount: {$sourcecount},
-                        condensePrompt: '{$condenseprompt}',
-                        questionPrompt: '{$questionprompt}',
+                        condensePrompt: \"{$condenseprompt}\",
+                        questionPrompt: \"{$questionprompt}\",
                         temperature: {$temperature},
-                        customCSS: '{$customcss}',
+                        customCSS: \"{$customcss}\",
                         startOpen: {$startopen},
                     };
                 
@@ -164,6 +186,9 @@ class block_ube_ta extends block_base {
 
     }
 
+    /**
+     * Get the signature for the Oracle API
+     */
     protected function getSignature($expires, $privateKey):string {
         // validate parameters
         if (empty($expires)){

@@ -45,6 +45,29 @@ export class UBETA {
     mouseStartY;
     root;
 
+    /**
+     * Create a new instance of the chatbot
+     * 
+     * @param {object} settings An object containing the settings for the chatbot
+     * @param {string} settings.apiKey The API key for the chatbot
+     * @param {string} settings.expires The expiration date for the API key
+     * @param {string} settings.signature The signature for the API key
+     * @param {string} settings.filters The filters to apply to the chatbot response
+     * @param {boolean} settings.showSource Whether to show the source of the chatbot response
+     * @param {number} settings.resultCount The number of results to return from the chatbot
+     * @param {number} settings.condensePrompt The condense prompt for the chatbot
+     * @param {number} settings.questionPrompt The question prompt for the chatbot
+     * @param {number} settings.temperature The temperature for the chatbot
+     * @param {boolean} settings.startOpen Whether the chat window should start open
+     * @param {string} settings.customCSS Custom CSS to apply to the chat window
+     * @param {string} settings.apiPath The path to the chatbot API
+     * @param {string} settings.cssPath The path to the chatbot CSS
+     * @param {string} settings.opener The opening message for the chatbot
+     * @param {string} settings.inputPlaceholder The placeholder text for the chatbot input
+     * 
+     * @returns {UBETA} A new instance of the chatbot
+     *  
+     */
     constructor(settings){
 
         // load settings
@@ -278,6 +301,11 @@ export class UBETA {
 
     }
 
+    /**
+     * Add an error message to the chat log
+     * 
+     * @param {string} message An error message to add to the chat log
+     */
     addErrorChat(message){
 
         //enable chat input
@@ -294,6 +322,9 @@ export class UBETA {
         log.scrollTop = log.scrollHeight
     }
 
+    /**
+     * Resize the chat window
+     */
     resizeWindow = (e) => {
         const dx = this.mouseStartX - e.x;
         const dy = this.mouseStartY - e.y;

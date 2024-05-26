@@ -74,3 +74,4 @@
  
  // 개인정보 처리방침
  $string['privacy:metadata'] = 'UBE TA 블록은 개인 데이터를 저장하지 않습니다.';
+ 
