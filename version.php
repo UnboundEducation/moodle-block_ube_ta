@@ -28,4 +28,4 @@ $plugin->component = 'block_ube_ta';
 $plugin->version = 2024052700;
 $plugin->requires = 2020061513;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '1.7.1';
+$plugin->release = '1.7.2';
