@@ -108,6 +108,11 @@ class block_ube_ta extends block_base {
             //$filters = base64_encode($this->config->config_filters);
         }
 
+        $quick_filters = 'null';
+        if (!empty($this->config->quick_filters)) {
+            echo json_encode($this->config->quick_filters);
+        }
+
         $showsource = 'false';
         if (!empty($this->config->showsource)) {
             $showsource = 'true';

@@ -63,6 +63,10 @@ $string['config_sourcecount'] = 'Source Count';
 $string['config_sourcecount_help'] = 'How many sources to pull and provide to the AI. Supported values are 0 to 5.';
 $string['config_customcss'] = 'Custom CSS';
 $string['config_customcss_help'] = 'Custom CSS to use for this block.  This should be valid CSS.';
+$string['metadata_filter'] = 'Metadata Filters';
+$string['field_name'] = 'Name';
+$string['field_value'] = 'Value';
+$string['add_filter'] = 'Add Filter';
 
 // Block strings
 $string['input_placeholder'] = 'Ask a question...';
