@@ -124,9 +124,6 @@ class block_ube_ta extends block_base {
         }
 
         $condenseprompt = '';
-        if (!empty($this->config->condenseprompt)) {
-            $condenseprompt = htmlspecialchars(addslashes(str_replace(["\r","\n"], ' ', $this->config->condenseprompt)));
-        }
 
         $questionprompt = '';
         if (!empty($this->config->questionprompt)) {

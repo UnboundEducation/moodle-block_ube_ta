@@ -43,7 +43,7 @@ $string['data_filters'] = 'Data Filters';
 $string['config_opener'] = 'Conversation Opener';
 $string['config_opener_help'] = 'The initial message "sent by the bot" to the end-user, when the chat is first opened.<p>
 <i>Note: By default, this is a language specific string. Changing it from the default will override language support.</i></p>';
-$string['config_filters'] = 'Configure Filters';
+$string['config_filters'] = 'Advanced Filtering';
 $string['config_filters_help'] = 'Configure the filters to use for this block.<p>
 Exmaple: {"Category": "Math", "Grade": "3", "file": "handout.pdf"}
 </p>';

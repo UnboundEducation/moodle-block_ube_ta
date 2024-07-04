@@ -66,12 +66,6 @@ class block_ube_ta_edit_form extends block_edit_form {
         $mform->setType('config_questionprompt', \PARAM_TEXT);
         $mform->addHelpButton('config_questionprompt', 'config_questionprompt', 'block_ube_ta');
 
-        $mform->addElement('textarea', 'config_condenseprompt', \get_string('config_condenseprompt', 'block_ube_ta'));
-        $mform->setDefault('config_condenseprompt', '');
-        $mform->setType('config_condenseprompt', \PARAM_TEXT);
-        $mform->addHelpButton('config_condenseprompt', 'config_condenseprompt', 'block_ube_ta');
-        $mform->setAdvanced('config_condenseprompt', true);
-
         $mform->addElement('textarea', 'config_customcss', \get_string('config_customcss', 'block_ube_ta'));
         $mform->setDefault('config_customcss', '');
         $mform->setType('config_customcss', \PARAM_TEXT);
@@ -94,13 +88,15 @@ class block_ube_ta_edit_form extends block_edit_form {
         new MoodleQuickForm_group($mform, 'quick_filter_group', 'Quick Filters', $repeatarray, null, null, null, null, false);
         $repeatno = 0; // Number of elements to initially display
         if (!empty($this->block->config->filters)){
-            $filters = json_decode($this->block->config->filters, true);
-            $repeatno = count($filters);
-            $i=0;
-            foreach ($filters as $key => $value){
-                $mform->setDefault("quick_filter_group[$i][field_name]", $key);
-                $mform->setDefault("quick_filter_group[$i][field_value]", $value);
-                $i++;
+            $filters = json_decode($this->block->config->filters);
+            if (is_array($filters)){
+                $repeatno = count($filters);
+                $i=0;
+                foreach ($filters as $key => $value){
+                    $mform->setDefault("quick_filter_group[$i][field_name]", $key);
+                    $mform->setDefault("quick_filter_group[$i][field_value]", $value);
+                    $i++;
+                }
             }
         }
         $repeateloptions = [
@@ -148,7 +144,7 @@ class block_ube_ta_edit_form extends block_edit_form {
     public function get_data() {
         if ($data = parent::get_data()) {
             //echo "get data";
-            echo json_encode($data);
+            //echo json_encode($data);
             //die();
 
             if (!empty($data->quick_filter_group)){
